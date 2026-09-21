@@ -70,26 +70,19 @@
 
     h1 {
       margin: 0;
-
       font-size: 34px;
       letter-spacing: 0.03em;
     }
 
     .studio {
       margin-top: 7px;
-
       color: var(--muted);
       font-size: 15px;
     }
 
     .tagline {
-      margin:
-        18px
-        auto
-        0;
-
+      margin: 18px auto 0;
       max-width: 520px;
-
       font-size: 16px;
       line-height: 1.65;
     }
@@ -99,17 +92,10 @@
     }
 
     .section-title {
-      margin:
-        0
-        0
-        10px
-        3px;
-
+      margin: 0 0 10px 3px;
       color: var(--muted);
-
       font-size: 12px;
       font-weight: 700;
-
       letter-spacing: 0.14em;
       text-transform: uppercase;
     }
@@ -119,33 +105,26 @@
       gap: 11px;
     }
 
-    a.button {
+    a.button,
+    button.button {
       display: flex;
-
       align-items: center;
       justify-content: space-between;
-
       gap: 16px;
 
+      width: 100%;
       min-height: 58px;
 
-      padding:
-        15px
-        18px;
+      padding: 15px 18px;
 
-      border:
-        1px
-        solid
-        var(--border);
-
+      border: 1px solid var(--border);
       border-radius: 14px;
 
-      background:
-        var(--panel);
+      background: var(--panel);
+      color: var(--text);
 
-      color:
-        var(--text);
-
+      font: inherit;
+      text-align: left;
       text-decoration: none;
 
       transition:
@@ -154,15 +133,15 @@
         transform 0.15s ease;
     }
 
-    a.button:hover {
-      background:
-        var(--hover);
+    a.button:hover,
+    button.button:hover {
+      background: var(--hover);
+      border-color: #444451;
+      transform: translateY(-1px);
+    }
 
-      border-color:
-        #444451;
-
-      transform:
-        translateY(-1px);
+    button.button {
+      cursor: pointer;
     }
 
     .label {
@@ -171,33 +150,29 @@
 
     .sub {
       display: block;
-
       margin-top: 3px;
-
-      color:
-        var(--muted);
-
+      color: var(--muted);
       font-size: 12px;
       font-weight: 400;
     }
 
     .arrow {
       flex: 0 0 auto;
-
-      color:
-        var(--muted);
-
+      color: var(--muted);
       font-size: 18px;
+    }
+
+    .copy-text {
+      flex: 0 0 auto;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
     }
 
     footer {
       margin-top: 34px;
-
       text-align: center;
-
-      color:
-        #7f7f8a;
-
+      color: #7f7f8a;
       font-size: 12px;
     }
   </style>
@@ -243,9 +218,7 @@
             </span>
           </span>
 
-          <span class="arrow">
-            ↗
-          </span>
+          <span class="arrow">↗</span>
         </a>
 
 
@@ -261,9 +234,7 @@
             </span>
           </span>
 
-          <span class="arrow">
-            ↗
-          </span>
+          <span class="arrow">↗</span>
         </a>
 
 
@@ -283,9 +254,7 @@
             </span>
           </span>
 
-          <span class="arrow">
-            ↗
-          </span>
+          <span class="arrow">↗</span>
         </a>
 
       </div>
@@ -313,9 +282,7 @@
             </span>
           </span>
 
-          <span class="arrow">
-            ↗
-          </span>
+          <span class="arrow">↗</span>
         </a>
 
 
@@ -331,9 +298,7 @@
             </span>
           </span>
 
-          <span class="arrow">
-            ↗
-          </span>
+          <span class="arrow">↗</span>
         </a>
 
 
@@ -349,9 +314,7 @@
             </span>
           </span>
 
-          <span class="arrow">
-            ↗
-          </span>
+          <span class="arrow">↗</span>
         </a>
 
       </div>
@@ -383,9 +346,7 @@
             </span>
           </span>
 
-          <span class="arrow">
-            ↗
-          </span>
+          <span class="arrow">↗</span>
         </a>
 
 
@@ -405,9 +366,7 @@
             </span>
           </span>
 
-          <span class="arrow">
-            ↗
-          </span>
+          <span class="arrow">↗</span>
         </a>
 
 
@@ -427,9 +386,7 @@
             </span>
           </span>
 
-          <span class="arrow">
-            ↗
-          </span>
+          <span class="arrow">↗</span>
         </a>
 
       </div>
@@ -445,9 +402,11 @@
 
       <div class="links">
 
-        <a
+        <button
           class="button"
-          href="mailto:5j6bworks@gmail.com"
+          type="button"
+          onclick="copyEmail(this)"
+          aria-label="Copy press and business contact email"
         >
           <span>
             <span class="label">
@@ -459,10 +418,10 @@
             </span>
           </span>
 
-          <span class="arrow">
-            ↗
+          <span class="copy-text">
+            Copy
           </span>
-        </a>
+        </button>
 
       </div>
     </section>
@@ -474,5 +433,57 @@
     </footer>
 
   </main>
+
+
+  <script>
+    function copyEmail(button) {
+      const email = "5j6bworks@gmail.com";
+      const indicator = button.querySelector(".copy-text");
+
+      navigator.clipboard.writeText(email)
+        .then(() => {
+          indicator.textContent = "Copied!";
+
+          setTimeout(() => {
+            indicator.textContent = "Copy";
+          }, 1500);
+        })
+        .catch(() => {
+          fallbackCopyEmail(email, indicator);
+        });
+    }
+
+    function fallbackCopyEmail(email, indicator) {
+      const textarea = document.createElement("textarea");
+
+      textarea.value = email;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+
+      document.body.appendChild(textarea);
+
+      textarea.select();
+      textarea.setSelectionRange(0, textarea.value.length);
+
+      try {
+        document.execCommand("copy");
+        indicator.textContent = "Copied!";
+
+        setTimeout(() => {
+          indicator.textContent = "Copy";
+        }, 1500);
+      } catch (error) {
+        indicator.textContent = "Copy failed";
+
+        setTimeout(() => {
+          indicator.textContent = "Copy";
+        }, 1500);
+      }
+
+      document.body.removeChild(textarea);
+    }
+  </script>
+
 </body>
 </html>
