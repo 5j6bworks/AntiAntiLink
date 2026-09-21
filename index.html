@@ -2,7 +2,11 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
 
   <title>ANTI-ANTI | 5J6B Works</title>
 
@@ -25,9 +29,22 @@
       box-sizing: border-box;
     }
 
+    html {
+      width: 100%;
+      min-height: 100%;
+
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
     body {
       margin: 0;
+
+      width: 100%;
+      min-width: 0;
       min-height: 100vh;
+
+      overflow-x: hidden;
 
       background:
         linear-gradient(
@@ -52,72 +69,122 @@
       display: flex;
       justify-content: center;
 
-      padding:
-        44px
-        18px
-        64px;
+      padding-top:
+        max(
+          44px,
+          env(safe-area-inset-top)
+        );
+
+      padding-right:
+        max(
+          18px,
+          env(safe-area-inset-right)
+        );
+
+      padding-bottom:
+        max(
+          64px,
+          env(safe-area-inset-bottom)
+        );
+
+      padding-left:
+        max(
+          18px,
+          env(safe-area-inset-left)
+        );
     }
 
     main {
       width: 100%;
       max-width: 620px;
+      min-width: 0;
     }
 
     header {
+      width: 100%;
       text-align: center;
       margin-bottom: 30px;
     }
 
     h1 {
       margin: 0;
+
       font-size: 34px;
+      line-height: 1.15;
+
       letter-spacing: 0.03em;
+
+      overflow-wrap: anywhere;
     }
 
     .studio {
       margin-top: 7px;
+
       color: var(--muted);
+
       font-size: 15px;
+      line-height: 1.4;
     }
 
     .tagline {
       margin: 18px auto 0;
+
       max-width: 520px;
+
       font-size: 16px;
       line-height: 1.65;
+
+      overflow-wrap: anywhere;
     }
 
     .section {
+      width: 100%;
       margin-top: 26px;
     }
 
     .section-title {
-      margin: 0 0 10px 3px;
+      margin:
+        0
+        0
+        10px
+        3px;
+
       color: var(--muted);
+
       font-size: 12px;
       font-weight: 700;
+
       letter-spacing: 0.14em;
       text-transform: uppercase;
     }
 
     .links {
+      width: 100%;
+
       display: grid;
       gap: 11px;
     }
 
     a.button,
     button.button {
+      width: 100%;
+      min-width: 0;
+      min-height: 58px;
+
       display: flex;
+
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
 
-      width: 100%;
-      min-height: 58px;
+      gap: 16px;
 
       padding: 15px 18px;
 
-      border: 1px solid var(--border);
+      border:
+        1px
+        solid
+        var(--border);
+
       border-radius: 14px;
 
       background: var(--panel);
@@ -126,6 +193,11 @@
       font: inherit;
       text-align: left;
       text-decoration: none;
+
+      -webkit-appearance: none;
+      appearance: none;
+
+      -webkit-tap-highlight-color: transparent;
 
       transition:
         background 0.15s ease,
@@ -137,43 +209,186 @@
     button.button:hover {
       background: var(--hover);
       border-color: #444451;
-      transform: translateY(-1px);
+
+      transform:
+        translateY(-1px);
+    }
+
+    a.button:active,
+    button.button:active {
+      transform:
+        translateY(0);
     }
 
     button.button {
       cursor: pointer;
     }
 
+    a.button > span:first-child,
+    button.button > span:first-child {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
     .label {
+      display: block;
+
+      min-width: 0;
+
       font-weight: 700;
+      line-height: 1.4;
+
+      overflow-wrap: anywhere;
+      word-break: normal;
     }
 
     .sub {
       display: block;
+
+      min-width: 0;
+
       margin-top: 3px;
+
       color: var(--muted);
+
       font-size: 12px;
       font-weight: 400;
+      line-height: 1.45;
+
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .arrow {
       flex: 0 0 auto;
+
       color: var(--muted);
+
       font-size: 18px;
+      line-height: 1;
     }
 
     .copy-text {
       flex: 0 0 auto;
+
       color: var(--muted);
+
       font-size: 13px;
       font-weight: 600;
+
+      white-space: nowrap;
     }
 
     footer {
       margin-top: 34px;
+
       text-align: center;
+
       color: #7f7f8a;
+
       font-size: 12px;
+    }
+
+    @media
+    (
+      max-width: 480px
+    ) {
+      body {
+        padding-top:
+          max(
+            32px,
+            env(safe-area-inset-top)
+          );
+
+        padding-right:
+          max(
+            14px,
+            env(safe-area-inset-right)
+          );
+
+        padding-bottom:
+          max(
+            48px,
+            env(safe-area-inset-bottom)
+          );
+
+        padding-left:
+          max(
+            14px,
+            env(safe-area-inset-left)
+          );
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .tagline {
+        font-size: 15px;
+      }
+
+      a.button,
+      button.button {
+        min-height: 56px;
+
+        padding:
+          14px
+          15px;
+
+        gap: 12px;
+
+        border-radius: 13px;
+      }
+    }
+
+    @media
+    (
+      max-width: 360px
+    ) {
+      h1 {
+        font-size: 27px;
+      }
+
+      .studio {
+        font-size: 14px;
+      }
+
+      .tagline {
+        font-size: 14px;
+      }
+
+      .section {
+        margin-top: 22px;
+      }
+
+      .section-title {
+        font-size: 11px;
+      }
+
+      a.button,
+      button.button {
+        padding:
+          13px
+          13px;
+
+        gap: 10px;
+      }
+
+      .label {
+        font-size: 14px;
+      }
+
+      .sub {
+        font-size: 11px;
+      }
+
+      .arrow {
+        font-size: 16px;
+      }
+
+      .copy-text {
+        font-size: 12px;
+      }
     }
   </style>
 </head>
@@ -183,7 +398,10 @@
 
     <!-- HEADER -->
     <header>
-      <h1>ANTI-ANTI</h1>
+
+      <h1>
+        ANTI-ANTI
+      </h1>
 
       <div class="studio">
         5J6B Works
@@ -194,6 +412,7 @@
         <br />
         Psychological Thriller Adventure
       </div>
+
     </header>
 
 
@@ -218,7 +437,9 @@
             </span>
           </span>
 
-          <span class="arrow">↗</span>
+          <span class="arrow">
+            ↗
+          </span>
         </a>
 
 
@@ -234,7 +455,9 @@
             </span>
           </span>
 
-          <span class="arrow">↗</span>
+          <span class="arrow">
+            ↗
+          </span>
         </a>
 
 
@@ -245,6 +468,7 @@
           rel="noopener noreferrer"
         >
           <span>
+
             <span class="label">
               ANTI-ANTI on Tumblbug
             </span>
@@ -252,12 +476,16 @@
             <span class="sub">
               Crowdfunding completed — 213%
             </span>
+
           </span>
 
-          <span class="arrow">↗</span>
+          <span class="arrow">
+            ↗
+          </span>
         </a>
 
       </div>
+
     </section>
 
 
@@ -277,12 +505,16 @@
           rel="noopener noreferrer"
         >
           <span>
+
             <span class="label">
               X (Twitter)
             </span>
+
           </span>
 
-          <span class="arrow">↗</span>
+          <span class="arrow">
+            ↗
+          </span>
         </a>
 
 
@@ -293,12 +525,16 @@
           rel="noopener noreferrer"
         >
           <span>
+
             <span class="label">
               YouTube
             </span>
+
           </span>
 
-          <span class="arrow">↗</span>
+          <span class="arrow">
+            ↗
+          </span>
         </a>
 
 
@@ -309,15 +545,20 @@
           rel="noopener noreferrer"
         >
           <span>
+
             <span class="label">
               Instagram
             </span>
+
           </span>
 
-          <span class="arrow">↗</span>
+          <span class="arrow">
+            ↗
+          </span>
         </a>
 
       </div>
+
     </section>
 
 
@@ -337,6 +578,7 @@
           rel="noopener noreferrer"
         >
           <span>
+
             <span class="label">
               Press Kit — 한국어
             </span>
@@ -344,9 +586,12 @@
             <span class="sub">
               Korean
             </span>
+
           </span>
 
-          <span class="arrow">↗</span>
+          <span class="arrow">
+            ↗
+          </span>
         </a>
 
 
@@ -357,6 +602,7 @@
           rel="noopener noreferrer"
         >
           <span>
+
             <span class="label">
               Press Kit — English
             </span>
@@ -364,9 +610,12 @@
             <span class="sub">
               English
             </span>
+
           </span>
 
-          <span class="arrow">↗</span>
+          <span class="arrow">
+            ↗
+          </span>
         </a>
 
 
@@ -377,6 +626,7 @@
           rel="noopener noreferrer"
         >
           <span>
+
             <span class="label">
               Press Kit — 日本語
             </span>
@@ -384,12 +634,16 @@
             <span class="sub">
               Japanese
             </span>
+
           </span>
 
-          <span class="arrow">↗</span>
+          <span class="arrow">
+            ↗
+          </span>
         </a>
 
       </div>
+
     </section>
 
 
@@ -408,7 +662,9 @@
           onclick="copyEmail(this)"
           aria-label="Copy press and business contact email"
         >
+
           <span>
+
             <span class="label">
               Press / Business Contact
             </span>
@@ -416,14 +672,17 @@
             <span class="sub">
               5j6bworks@gmail.com
             </span>
+
           </span>
 
           <span class="copy-text">
             Copy
           </span>
+
         </button>
 
       </div>
+
     </section>
 
 
@@ -437,51 +696,131 @@
 
   <script>
     function copyEmail(button) {
-      const email = "5j6bworks@gmail.com";
-      const indicator = button.querySelector(".copy-text");
+      const email =
+        "5j6bworks@gmail.com";
 
-      navigator.clipboard.writeText(email)
-        .then(() => {
-          indicator.textContent = "Copied!";
+      const indicator =
+        button.querySelector(
+          ".copy-text"
+        );
 
-          setTimeout(() => {
-            indicator.textContent = "Copy";
-          }, 1500);
-        })
-        .catch(() => {
-          fallbackCopyEmail(email, indicator);
-        });
+      if (
+        navigator.clipboard &&
+        window.isSecureContext
+      ) {
+        navigator.clipboard
+          .writeText(email)
+          .then(() => {
+            showCopiedState(
+              indicator
+            );
+          })
+          .catch(() => {
+            fallbackCopyEmail(
+              email,
+              indicator
+            );
+          });
+
+        return;
+      }
+
+      fallbackCopyEmail(
+        email,
+        indicator
+      );
     }
 
-    function fallbackCopyEmail(email, indicator) {
-      const textarea = document.createElement("textarea");
 
-      textarea.value = email;
-      textarea.setAttribute("readonly", "");
-      textarea.style.position = "fixed";
-      textarea.style.opacity = "0";
+    function fallbackCopyEmail(
+      email,
+      indicator
+    ) {
+      const textarea =
+        document.createElement(
+          "textarea"
+        );
 
-      document.body.appendChild(textarea);
+      textarea.value =
+        email;
+
+      textarea.setAttribute(
+        "readonly",
+        ""
+      );
+
+      textarea.style.position =
+        "fixed";
+
+      textarea.style.top =
+        "0";
+
+      textarea.style.left =
+        "0";
+
+      textarea.style.width =
+        "1px";
+
+      textarea.style.height =
+        "1px";
+
+      textarea.style.opacity =
+        "0";
+
+      document.body.appendChild(
+        textarea
+      );
+
+      textarea.focus();
 
       textarea.select();
-      textarea.setSelectionRange(0, textarea.value.length);
+
+      textarea.setSelectionRange(
+        0,
+        textarea.value.length
+      );
 
       try {
-        document.execCommand("copy");
-        indicator.textContent = "Copied!";
+        const success =
+          document.execCommand(
+            "copy"
+          );
 
-        setTimeout(() => {
-          indicator.textContent = "Copy";
-        }, 1500);
+        if (!success) {
+          throw new Error(
+            "Copy failed"
+          );
+        }
+
+        showCopiedState(
+          indicator
+        );
       } catch (error) {
-        indicator.textContent = "Copy failed";
+        indicator.textContent =
+          "Copy failed";
 
         setTimeout(() => {
-          indicator.textContent = "Copy";
+          indicator.textContent =
+            "Copy";
         }, 1500);
       }
 
-      document.body.removeChild(textarea);
+      document.body.removeChild(
+        textarea
+      );
+    }
+
+
+    function showCopiedState(
+      indicator
+    ) {
+      indicator.textContent =
+        "Copied!";
+
+      setTimeout(() => {
+        indicator.textContent =
+          "Copy";
+      }, 1500);
     }
   </script>
 
