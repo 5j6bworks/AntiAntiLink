@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -32,14 +33,10 @@
     html {
       margin: 0;
       padding: 0;
-
       width: 100%;
       min-width: 100%;
-
       min-height: 100%;
-
       background: var(--bg);
-
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
     }
@@ -47,13 +44,10 @@
     body {
       margin: 0;
       padding: 0;
-
       width: 100%;
       min-width: 100%;
-
       min-height: 100vh;
       min-height: 100dvh;
-
       overflow-x: hidden;
 
       background:
@@ -79,147 +73,95 @@
 
     .page {
       display: block;
-
       width: calc(100% - 36px);
       max-width: 620px;
-
       margin-left: auto;
       margin-right: auto;
-
       padding-top: 44px;
       padding-bottom: 64px;
     }
 
     header {
       display: block;
-
       width: 100%;
-
       margin: 0 0 30px 0;
-
       text-align: center;
     }
 
     h1 {
       display: block;
-
       margin: 0;
-
       font-size: 34px;
       line-height: 1.15;
-
       letter-spacing: 0.03em;
-
       white-space: normal;
       word-break: normal;
     }
 
     .studio {
       display: block;
-
       margin-top: 7px;
-
       color: var(--muted);
-
       font-size: 15px;
       line-height: 1.4;
     }
 
     .tagline {
       display: block;
-
       width: 100%;
-
       margin: 18px auto 0;
-
       font-size: 16px;
       line-height: 1.65;
-
       white-space: normal;
       word-break: normal;
     }
 
     .section {
       display: block;
-
       width: 100%;
-
       margin-top: 26px;
     }
 
     .section-title {
       display: block;
-
       width: 100%;
-
-      margin:
-        0
-        0
-        10px
-        3px;
-
+      margin: 0 0 10px 3px;
       color: var(--muted);
-
       font-size: 12px;
       font-weight: 700;
-
       line-height: 1.4;
-
       letter-spacing: 0.14em;
-
       text-transform: uppercase;
-
       white-space: normal;
     }
 
     .links {
       display: block;
-
       width: 100%;
     }
 
     a.button,
     button.button {
       display: flex;
-
       width: 100%;
       min-width: 100%;
-
       min-height: 58px;
-
       margin: 0 0 11px 0;
-
-      padding:
-        15px
-        18px;
-
+      padding: 15px 18px;
       align-items: center;
       justify-content: space-between;
-
       gap: 16px;
-
-      border:
-        1px
-        solid
-        var(--border);
-
+      border: 1px solid var(--border);
       border-radius: 14px;
-
       background: var(--panel);
-
       color: var(--text);
-
       font-family: inherit;
       font-size: 16px;
-
       text-align: left;
       text-decoration: none;
-
       -webkit-appearance: none;
       appearance: none;
-
       -webkit-tap-highlight-color: transparent;
-
       cursor: pointer;
 
       transition:
@@ -236,9 +178,7 @@
     a.button:hover,
     button.button:hover {
       background: var(--hover);
-
       border-color: #444451;
-
       transform: translateY(-1px);
     }
 
@@ -249,123 +189,81 @@
 
     .button-content {
       display: block;
-
       flex: 1 1 auto;
-
       width: auto;
       min-width: 0;
-
       overflow: hidden;
     }
 
     .label {
       display: block;
-
       width: 100%;
-
       font-size: 16px;
       font-weight: 700;
-
       line-height: 1.4;
-
       white-space: normal;
-
       word-break: normal;
       overflow-wrap: normal;
     }
 
     .sub {
       display: block;
-
       width: 100%;
-
       margin-top: 3px;
-
       color: var(--muted);
-
       font-size: 12px;
       font-weight: 400;
-
       line-height: 1.45;
-
       white-space: normal;
-
       word-break: normal;
       overflow-wrap: break-word;
     }
 
     .arrow {
       display: block;
-
       flex: 0 0 auto;
-
       width: 20px;
-
       color: var(--muted);
-
       font-size: 18px;
       line-height: 1;
-
       text-align: center;
-
       white-space: nowrap;
     }
 
     .copy-text {
       display: block;
-
       flex: 0 0 auto;
-
       min-width: 48px;
-
       color: var(--muted);
-
       font-size: 13px;
       font-weight: 600;
-
       text-align: right;
-
       white-space: nowrap;
     }
 
     footer {
       display: block;
-
       width: 100%;
-
       margin-top: 34px;
-
       color: #7f7f8a;
-
       font-size: 12px;
-
       text-align: center;
     }
 
     @supports (
-      padding-top:
-        env(safe-area-inset-top)
+      padding-top: env(safe-area-inset-top)
     ) {
       .page {
         padding-top:
-          max(
-            44px,
-            env(safe-area-inset-top)
-          );
-
+          max(44px, env(safe-area-inset-top));
         padding-bottom:
-          max(
-            64px,
-            env(safe-area-inset-bottom)
-          );
+          max(64px, env(safe-area-inset-bottom));
       }
     }
 
     @media (max-width: 480px) {
       .page {
-        width:
-          calc(100% - 28px);
-
+        width: calc(100% - 28px);
         padding-top: 32px;
         padding-bottom: 48px;
       }
@@ -381,13 +279,8 @@
       a.button,
       button.button {
         min-height: 56px;
-
-        padding:
-          14px
-          15px;
-
+        padding: 14px 15px;
         gap: 12px;
-
         border-radius: 13px;
       }
 
@@ -398,9 +291,7 @@
 
     @media (max-width: 360px) {
       .page {
-        width:
-          calc(100% - 24px);
-
+        width: calc(100% - 24px);
         padding-top: 26px;
       }
 
@@ -426,10 +317,7 @@
 
       a.button,
       button.button {
-        padding:
-          13px
-          13px;
-
+        padding: 13px 13px;
         gap: 10px;
       }
 
@@ -443,13 +331,11 @@
 
       .arrow {
         width: 18px;
-
         font-size: 16px;
       }
 
       .copy-text {
         min-width: 44px;
-
         font-size: 12px;
       }
     }
@@ -496,18 +382,12 @@
           rel="noopener noreferrer"
         >
           <span class="button-content">
-
             <span class="label">
               ANTI-ANTI on Steam
             </span>
-
           </span>
-
-          <span class="arrow">
-            ↗
-          </span>
+          <span class="arrow">↗</span>
         </a>
-
 
         <a
           class="button"
@@ -516,18 +396,12 @@
           rel="noopener noreferrer"
         >
           <span class="button-content">
-
             <span class="label">
               ANTI-ANTI on STOVE
             </span>
-
           </span>
-
-          <span class="arrow">
-            ↗
-          </span>
+          <span class="arrow">↗</span>
         </a>
-
 
         <a
           class="button"
@@ -546,10 +420,7 @@
             </span>
 
           </span>
-
-          <span class="arrow">
-            ↗
-          </span>
+          <span class="arrow">↗</span>
         </a>
 
       </div>
@@ -568,23 +439,31 @@
 
         <a
           class="button"
-          href="https://x.com/5j6bworks"
+          href="https://x.com/ANTIANTIOff"
           target="_blank"
           rel="noopener noreferrer"
         >
           <span class="button-content">
-
             <span class="label">
               X (Twitter)
             </span>
-
           </span>
-
-          <span class="arrow">
-            ↗
-          </span>
+          <span class="arrow">↗</span>
         </a>
 
+        <a
+          class="button"
+          href="https://discord.gg/z6xx35nrTm"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="button-content">
+            <span class="label">
+              Discord
+            </span>
+          </span>
+          <span class="arrow">↗</span>
+        </a>
 
         <a
           class="button"
@@ -593,18 +472,12 @@
           rel="noopener noreferrer"
         >
           <span class="button-content">
-
             <span class="label">
               YouTube
             </span>
-
           </span>
-
-          <span class="arrow">
-            ↗
-          </span>
+          <span class="arrow">↗</span>
         </a>
-
 
         <a
           class="button"
@@ -613,16 +486,11 @@
           rel="noopener noreferrer"
         >
           <span class="button-content">
-
             <span class="label">
               Instagram
             </span>
-
           </span>
-
-          <span class="arrow">
-            ↗
-          </span>
+          <span class="arrow">↗</span>
         </a>
 
       </div>
@@ -641,7 +509,7 @@
 
         <a
           class="button"
-          href="https://www.dropbox.com/scl/fo/gnxeeh4ao5i92hqqiiwoh/APjNl7eRL-Ej7xp3J9XtW1o?rlkey=5grn3jd0peuuy9a6ziyakmox6&dl=0"
+          href="https://www.dropbox.com/scl/fo/gnxeeh4ao5i92hqqiiwoh/APjNl7eRL-Ej7xp3J9XtW1o?rlkey=5grn3jd0peuuy9a6ziyakmox6&amp;dl=0"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -656,16 +524,12 @@
             </span>
 
           </span>
-
-          <span class="arrow">
-            ↗
-          </span>
+          <span class="arrow">↗</span>
         </a>
-
 
         <a
           class="button"
-          href="https://www.dropbox.com/scl/fo/z9iy5kual9qioai8h04zq/APa6T_0iNFgmUhNmBuLcLMU?rlkey=63bvrdo23w4oyhqtua57bfxe2&dl=0"
+          href="https://www.dropbox.com/scl/fo/z9iy5kual9qioai8h04zq/APa6T_0iNFgmUhNmBuLcLMU?rlkey=63bvrdo23w4oyhqtua57bfxe2&amp;dl=0"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -680,16 +544,12 @@
             </span>
 
           </span>
-
-          <span class="arrow">
-            ↗
-          </span>
+          <span class="arrow">↗</span>
         </a>
-
 
         <a
           class="button"
-          href="https://www.dropbox.com/scl/fo/m1qpckzqhs9bkubrins7f/AOkO6b1g73HgB76JinKdDsg?rlkey=h7kimofdzx8jw47mykohyvna8&dl=0"
+          href="https://www.dropbox.com/scl/fo/m1qpckzqhs9bkubrins7f/AOkO6b1g73HgB76JinKdDsg?rlkey=h7kimofdzx8jw47mykohyvna8&amp;dl=0"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -704,10 +564,7 @@
             </span>
 
           </span>
-
-          <span class="arrow">
-            ↗
-          </span>
+          <span class="arrow">↗</span>
         </a>
 
       </div>
@@ -840,7 +697,6 @@
       );
 
       textarea.focus();
-
       textarea.select();
 
       textarea.setSelectionRange(
