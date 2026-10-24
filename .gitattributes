@@ -1,0 +1,2 @@
+# Blazor boot resource hashes require the exact published bytes on every platform.
+translation/** -text
