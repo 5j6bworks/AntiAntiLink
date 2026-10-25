@@ -33,7 +33,7 @@
       <label for="translation-ui-language"><span id="translation-language-label">표시 언어</span><select id="translation-ui-language" aria-label="Website language"><option value="ko">한국어</option><option value="en">English</option></select></label>
     </div>
   </nav>
-  <div id="app"><div class="loading">ANTI-ANTI <span>Loading / 불러오는 중…</span></div></div>
+  <p id="translation-availability" style="max-width:1240px;margin:12px auto 4px;padding:0 32px;color:#aaa8b4;font:12px/1.6 Arial, sans-serif">번역 패치는 2026년 10월 27일 17:00(KST) 정식판 출시부터 이용할 수 있습니다. 데모는 지원하지 않습니다.</p>\n  <div id="app"><div class="loading">ANTI-ANTI <span>Loading / 불러오는 중…</span></div></div>
   <div id="blazor-error-ui">The tool stopped unexpectedly. Download your work regularly. / 오류가 발생했습니다. 작업 파일은 수시로 저장하세요. <a href="">Reload / 새로고침</a></div>
   <script>
     (() => {
@@ -73,6 +73,7 @@
         document.documentElement.lang = value;
         guideLink.textContent = value === 'ko' ? '사용 방법: 카탈로그 · XLSX · 창작마당' : 'Guide: catalog · XLSX · Steam Workshop';
         document.getElementById('steam-guides-link').textContent = value === 'ko' ? 'Steam 커뮤니티 가이드 (한·영·일, 준비 중)' : 'Steam Community Guides (KO / EN / JA, coming soon)';
+        document.getElementById('translation-availability').textContent = value === 'ko' ? '번역 패치는 2026년 10월 27일 17:00(KST) 정식판 출시부터 이용할 수 있습니다. 데모는 지원하지 않습니다.' : 'Translation patches are available from the full release on October 27, 2026, at 5 PM KST. Not supported in the demo.';
         languageLabel.textContent = value === 'ko' ? '표시 언어' : 'Language';
         if (persist) try { localStorage.setItem(key, value); } catch (_) {}
         queueSynchronize();
