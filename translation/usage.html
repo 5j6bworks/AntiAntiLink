@@ -40,6 +40,8 @@ document.addEventListener('DOMContentLoaded',()=>{const selector=document.getEle
 <h1>번역 패치 제작 및 게시 안내</h1>
 <p class="muted">게임에 포함된 텍스트를 번역하고 Steam 창작마당에 게시하는 방법입니다. 번역 편집은 웹 브라우저에서 진행하지만, Steam 게시는 별도의 Windows 업로더가 필요합니다.</p>
 <p><a class="btn" href="./">번역 웹앱 실행</a></p>
+<p><a href="https://steamcommunity.com/app/4982060/guides/" target="_blank" rel="noopener">Steam 커뮤니티의 번역 패치 가이드 (한·영·일, 작성 중)</a></p>
+<p class="warn"><b>이용 시작:</b> 2026년 10월 27일 17:00(KST) 정식 출시부터. 데모는 번역 패치를 지원하지 않으며 Steam Next Fest 종료 후 제공을 종료할 예정입니다.</p>
 <div class="panel"><strong>준비물</strong><p>Steam에 설치된 ANTI-ANTI, 최신 웹 브라우저. Excel은 선택 사항입니다. 사용자 글꼴을 쓴다면 재배포가 허용된 TTF/OTF/TTC 파일 및 라이선스 문서가 필요합니다.</p><p class="warn">카탈로그는 사이트에서 제공하지 않습니다. 게임 설치 폴더에서 가져와야 합니다. 설치본에 카탈로그가 없는 경우 해당 빌드에 포함되었는지 확인해야 합니다.</p></div>
 <section><h2>1. 게임의 번역 카탈로그 불러오기</h2>
 <ol class="steps"><li>Steam 라이브러리에서 ANTI-ANTI를 우클릭합니다.</li><li><strong>관리 → 로컬 파일 찾아보기</strong>로 설치 폴더를 엽니다.</li><li><code>Anti Anti_Data/StreamingAssets/Translation/translation_catalog.json</code>을 찾습니다. <code>*_Data</code> 폴더 이름은 실행 파일명에 따라 달라질 수 있습니다.</li><li>웹앱의 <strong>번역 카탈로그 (.json)</strong>에서 파일을 선택합니다.</li></ol>
@@ -58,6 +60,8 @@ document.addEventListener('DOMContentLoaded',()=>{const selector=document.getEle
 <h1>Translation Patch Creation and Publishing Guide</h1>
 <p class="muted">Translate game text and create a pack for Steam Workshop. Editing runs in your web browser. Publishing to Steam Workshop requires a separate Windows uploader.</p>
 <p><a class="btn" href="./">Open translation editor</a></p>
+<p><a href="https://steamcommunity.com/app/4982060/guides/" target="_blank" rel="noopener">Steam Community translation patch guides (KO / EN / JA, in preparation)</a></p>
+<p class="warn"><b>Available from:</b> October 27, 2026, 5:00 PM KST with the full release. The demo does not support translation patches and will be withdrawn after Steam Next Fest.</p>
 <div class="panel"><strong>What you need</strong><p>ANTI-ANTI installed through Steam and a current web browser. Excel is optional. Custom fonts require a redistributable TTF/OTF/TTC file and its license documentation.</p><p class="warn">The catalog is not downloaded from this website. Obtain it from your installed game. If it is missing, confirm whether your installed build includes a translation catalog.</p></div>
 <section><h2>1. Load the game's translation catalog</h2><ol class="steps"><li>Right-click ANTI-ANTI in your Steam Library.</li><li>Choose <strong>Manage → Browse local files</strong>.</li><li>Find <code>Anti Anti_Data/StreamingAssets/Translation/translation_catalog.json</code>. The <code>*_Data</code> folder name may vary with the game executable.</li><li>Select this JSON in the web editor's <strong>Translation catalog (.json)</strong> field.</li></ol><p>This file contains translatable entries, Korean source text, and official English and Japanese references. The catalog must be loaded before importing a previously saved XLSX.</p></section>
 <section><h2>2. Translate in the browser or with XLSX</h2><p>Choose either workflow. You do not need a separate desktop translation application.</p>
