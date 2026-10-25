@@ -1,90 +1,17 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <base href="/AntiAntiLink/translation/" />
   <title>ANTI-ANTI · Translation Patch Editor</title>
   <meta name="description" content="Translate game text, use the translation catalog and XLSX, and prepare a Steam Workshop publishing pack." />
+  <link rel="icon" href="data:," />
   <link rel="stylesheet" href="app.css" />
-  <style>
-    .site-utility-bar{background:#18181e;border-bottom:1px solid #34333d;color:#f1f0ed;font:13px Arial,"Malgun Gothic",sans-serif}
-    .site-utility-inner{max-width:1240px;margin:auto;padding:9px 32px;display:flex;gap:16px;justify-content:space-between;align-items:center}
-    .site-utility-inner a{color:#d7f5aa;font-weight:600}
-    .site-utility-inner{flex-wrap:wrap;column-gap:20px;row-gap:6px}
-    .site-utility-inner label{display:flex;gap:8px;align-items:center;color:#aaa8b4;white-space:nowrap}.site-utility-inner label[hidden]{display:none!important}
-    .site-utility-inner select{width:120px;background:#25252d;border:1px solid #454450;border-radius:6px;color:#f1f0ed;padding:6px 9px;min-height:35px;font:13px Arial,sans-serif}
-    /* The deployed Blazor bundle predates the source UI improvements. Do not show its obsolete marketing hero. */
-    #app .hero .eyebrow,#app .hero h1,#app .hero>p,#app .hero .privacy{display:none!important}
-    #app .hero{padding:20px 0 18px;max-width:none}
-    #app .hero::before{content:"ANTI-ANTI 번역 패치 제작 도구";display:block;font-size:clamp(24px,3.5vw,34px);font-weight:750;margin-bottom:10px}
-    #app .hero::after{content:"게임에서 카탈로그 파일을 가져와 웹에서 번역하거나 XLSX로 작업하세요. Steam 창작마당 게시에는 별도 Windows 업로더가 필요합니다.";display:block;color:#aaa8b4;font-size:14px;line-height:1.7;max-width:860px}
-    html[lang="en"] #app .hero::before{content:"ANTI-ANTI Translation Patch Editor"}
-    html[lang="en"] #app .hero::after{content:"Load the catalog from your installed game. Translate in the browser or via XLSX. Publishing to Steam Workshop requires a separate Windows uploader."}
-    #app .site-header>button.quiet{display:none!important}
-    @media(max-width:600px){.site-utility-inner{padding:9px 16px}.site-utility-inner label>span{display:none}#app .hero{padding-top:16px}}
-  </style>
 </head>
 <body>
-  <nav class="site-utility-bar" aria-label="Website options">
-    <div class="site-utility-inner">
-      <a id="translation-guide-link" href="usage.html">사용 방법: 카탈로그 · XLSX · 창작마당</a>
-      <a id="steam-guides-link" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3826728977" target="_blank" rel="noopener">Steam 공식 번역 패치 가이드 (영어)</a>
-      <label for="translation-ui-language"><span id="translation-language-label">표시 언어</span><select id="translation-ui-language" aria-label="Website language"><option value="ko">한국어</option><option value="en">English</option></select></label>
-    </div>
-  </nav>
-  <p id="translation-availability" style="max-width:1240px;margin:12px auto 4px;padding:0 32px;color:#aaa8b4;font:12px/1.6 Arial, sans-serif">번역 패치는 2026년 10월 27일 17:00(KST) 정식판 출시부터 이용할 수 있습니다. 데모는 지원하지 않습니다.</p>
-  <div id="app"><div class="loading">ANTI-ANTI <span>Loading / 불러오는 중…</span></div></div>
+  <div id="app"><div class="loading">ANTI-ANTI <span>Translation Studio · Loading / 불러오는 중…</span></div></div>
   <div id="blazor-error-ui">The tool stopped unexpectedly. Download your work regularly. / 오류가 발생했습니다. 작업 파일은 수시로 저장하세요. <a href="">Reload / 새로고침</a></div>
-  <script>
-    (() => {
-      const key = 'antianti.translation.ui.lang';
-      const picker = document.getElementById('translation-ui-language');
-      const guideLink = document.getElementById('translation-guide-link');
-      const languageLabel = document.getElementById('translation-language-label');
-      const supported = v => v === 'ko' || v === 'en';
-      let selected;
-      try { selected = localStorage.getItem(key); } catch (_) {}
-      if (!supported(selected)) selected = navigator.language.toLowerCase().startsWith('ko') ? 'ko' : 'en';
-      let pending = false;
-      function synchronize() {
-        const native = document.querySelector('#app .language-picker select');
-        if (native) {
-          picker.closest('label').hidden = true;
-          if (native.value !== selected) {
-            native.value = selected;
-            native.dispatchEvent(new Event('change', { bubbles: true }));
-          }
-          return;
-        }
-        // Compatibility adapter for the published Blazor bundle, until it is rebuilt.
-        const oldButton = document.querySelector('#app .site-header > button.quiet');
-        if (!oldButton) return;
-        const activeLanguage = oldButton.textContent.trim() === 'English' ? 'ko' : 'en';
-        if (activeLanguage !== selected) oldButton.click();
-      }
-      function queueSynchronize() {
-        if (pending) return;
-        pending = true;
-        requestAnimationFrame(() => { pending = false; synchronize(); });
-      }
-      function showLanguage(value, persist) {
-        selected = value;
-        picker.value = value;
-        document.documentElement.lang = value;
-        guideLink.textContent = value === 'ko' ? '사용 방법: 카탈로그 · XLSX · 창작마당' : 'Guide: catalog · XLSX · Steam Workshop';
-        document.getElementById('steam-guides-link').textContent = value === 'ko' ? 'Steam 공식 번역 패치 가이드 (영어)' : 'Official Steam translation guide (English)';
-        document.getElementById('translation-availability').textContent = value === 'ko' ? '번역 패치는 2026년 10월 27일 17:00(KST) 정식판 출시부터 이용할 수 있습니다. 데모는 지원하지 않습니다.' : 'Translation patches are available from the full release on October 27, 2026, at 5 PM KST. Not supported in the demo.';
-        languageLabel.textContent = value === 'ko' ? '표시 언어' : 'Language';
-        if (persist) try { localStorage.setItem(key, value); } catch (_) {}
-        queueSynchronize();
-      }
-      picker.addEventListener('change', () => showLanguage(picker.value, true));
-      const app = document.getElementById('app');
-      new MutationObserver(queueSynchronize).observe(app, { childList: true, subtree: true, characterData: true });
-      showLanguage(selected, false);
-    })();
-  </script>
   <script src="_framework/blazor.webassembly.js"></script>
 </body>
 </html>

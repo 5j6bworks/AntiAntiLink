@@ -2,12 +2,11 @@ let dirty = false, activeWorker;
 window.addEventListener('beforeunload', e => { if (dirty || activeWorker) { e.preventDefault(); e.returnValue = ''; } });
 const languageStorageKey = 'antianti.translation.ui.lang';
 export function language() {
-    let saved;
-    try { saved = window.localStorage.getItem(languageStorageKey); } catch (_) {}
+    const saved = window.localStorage.getItem(languageStorageKey);
     return saved === 'ko' || saved === 'en' ? saved : (navigator.language.startsWith('ko') ? 'ko' : 'en');
 }
 export function saveLanguage(value) {
-    if (value === 'ko' || value === 'en') try { window.localStorage.setItem(languageStorageKey, value); } catch (_) {}
+    if (value === 'ko' || value === 'en') window.localStorage.setItem(languageStorageKey, value);
 }
 export function setDirty(value) { dirty = value; }
 export function confirmReplace(message) { return !dirty || window.confirm(message); }
