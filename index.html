@@ -339,6 +339,30 @@
         font-size: 12px;
       }
     }
+
+    /* Subtle community translation link */
+    .translation-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration: none;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .translation-link:hover {
+      background: var(--hover);
+      color: var(--text);
+    }
+
+    .translation-link .arrow {
+      font-size: 14px;
+    }
   </style>
 </head>
 
@@ -497,6 +521,21 @@
 
     </section>
 
+
+
+    <!-- COMMUNITY TRANSLATION -->
+    <section class="section" aria-label="Community Translation">
+      <div class="section-title">Community &amp; Localization</div>
+      <a
+        class="translation-link"
+        href="./translation/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>Community Translation Tool</span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+    </section>
 
     <!-- PRESS KIT -->
     <section class="section">
