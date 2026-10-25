@@ -1,6 +1,14 @@
 let dirty = false, activeWorker;
 window.addEventListener('beforeunload', e => { if (dirty || activeWorker) { e.preventDefault(); e.returnValue = ''; } });
-export function language() { return navigator.language.startsWith('ko') ? 'ko' : 'en'; }
+const languageStorageKey = 'antianti.translation.ui.lang';
+export function language() {
+    let saved;
+    try { saved = window.localStorage.getItem(languageStorageKey); } catch (_) {}
+    return saved === 'ko' || saved === 'en' ? saved : (navigator.language.startsWith('ko') ? 'ko' : 'en');
+}
+export function saveLanguage(value) {
+    if (value === 'ko' || value === 'en') try { window.localStorage.setItem(languageStorageKey, value); } catch (_) {}
+}
 export function setDirty(value) { dirty = value; }
 export function confirmReplace(message) { return !dirty || window.confirm(message); }
 export async function prepareDownload(name, stream) {
