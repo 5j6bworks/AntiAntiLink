@@ -11,6 +11,7 @@
     .site-utility-bar{background:#18181e;border-bottom:1px solid #34333d;color:#f1f0ed;font:13px Arial,"Malgun Gothic",sans-serif}
     .site-utility-inner{max-width:1240px;margin:auto;padding:9px 32px;display:flex;gap:16px;justify-content:space-between;align-items:center}
     .site-utility-inner a{color:#d7f5aa;font-weight:600}
+    .site-utility-inner{flex-wrap:wrap;column-gap:20px;row-gap:6px}
     .site-utility-inner label{display:flex;gap:8px;align-items:center;color:#aaa8b4;white-space:nowrap}.site-utility-inner label[hidden]{display:none!important}
     .site-utility-inner select{width:120px;background:#25252d;border:1px solid #454450;border-radius:6px;color:#f1f0ed;padding:6px 9px;min-height:35px;font:13px Arial,sans-serif}
     /* The deployed Blazor bundle predates the source UI improvements. Do not show its obsolete marketing hero. */
@@ -28,6 +29,7 @@
   <nav class="site-utility-bar" aria-label="Website options">
     <div class="site-utility-inner">
       <a id="translation-guide-link" href="usage.html">사용 방법: 카탈로그 · XLSX · 창작마당</a>
+      <a id="steam-guides-link" href="https://steamcommunity.com/app/4982060/guides/" target="_blank" rel="noopener">Steam 커뮤니티 가이드 (한·영·일, 준비 중)</a>
       <label for="translation-ui-language"><span id="translation-language-label">표시 언어</span><select id="translation-ui-language" aria-label="Website language"><option value="ko">한국어</option><option value="en">English</option></select></label>
     </div>
   </nav>
@@ -70,6 +72,7 @@
         picker.value = value;
         document.documentElement.lang = value;
         guideLink.textContent = value === 'ko' ? '사용 방법: 카탈로그 · XLSX · 창작마당' : 'Guide: catalog · XLSX · Steam Workshop';
+        document.getElementById('steam-guides-link').textContent = value === 'ko' ? 'Steam 커뮤니티 가이드 (한·영·일, 준비 중)' : 'Steam Community Guides (KO / EN / JA, coming soon)';
         languageLabel.textContent = value === 'ko' ? '표시 언어' : 'Language';
         if (persist) try { localStorage.setItem(key, value); } catch (_) {}
         queueSynchronize();
