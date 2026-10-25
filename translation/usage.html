@@ -1,17 +1,73 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ANTI-ANTI 번역 패치 사용 안내</title><style>
-:root{color-scheme:dark;font-family:Arial,"Malgun Gothic",sans-serif}*{box-sizing:border-box}body{background:#101014;color:#f1f0ed;margin:0;line-height:1.65}main,header{max-width:940px;margin:auto;padding:24px}header{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid #35353e}a{color:#d7f5aa}h1{font-size:clamp(25px,4vw,37px)}h2{font-size:21px;margin-top:35px}h3{font-size:17px;margin-bottom:5px}.muted{color:#bbb9c3}.panel{background:#19191f;border:1px solid #35353e;border-radius:10px;padding:22px;margin:20px 0}.steps li{padding:8px 0}.steps li::marker{font-weight:bold;color:#d7f5aa}code{background:#2b2b32;border-radius:4px;padding:2px 6px;overflow-wrap:anywhere}table{border-collapse:collapse;width:100%}th,td{text-align:left;border-bottom:1px solid #35353e;padding:11px 8px;vertical-align:top}.warn{border-left:3px solid #e9c184;padding-left:13px}.btn{display:inline-block;padding:10px 18px;background:#d7f5aa;color:#18200f;border-radius:6px;text-decoration:none;font-weight:bold}section{margin-bottom:25px}@media(max-width:600px){header{flex-direction:column}main,header{padding:18px}table{font-size:13px}}
-</style></head><body><header><strong>ANTI-ANTI · 5J6B WORKS</strong><a href="./">번역 웹앱 열기 / Open editor</a></header><main>
-<h1>ANTI-ANTI 번역 패치 제작 및 게시 안내</h1>
-<p class="muted">게임의 대사와 UI 텍스트를 번역하고 Steam 창작마당에 게시하는 방법입니다. 번역 편집은 웹 브라우저에서 진행하며, 창작마당 게시에는 별도 Windows 프로그램이 필요합니다.</p>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ANTI-ANTI · 번역 패치 사용 안내</title>
+<style>
+:root{color-scheme:dark;font-family:Arial,"Malgun Gothic",sans-serif}
+*{box-sizing:border-box}body{background:#101014;color:#f1f0ed;margin:0;line-height:1.65}
+header,main{max-width:960px;margin:auto;padding:24px}
+header{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid #35353e}
+header .tools{display:flex;align-items:center;gap:18px}
+header select{padding:8px 10px;width:120px;border-radius:6px;border:1px solid #55545d;color:#f1f0ed;background:#25252d;font:13px Arial,sans-serif}
+a{color:#d7f5aa}h1{font-size:clamp(24px,4vw,34px);line-height:1.25}h2{font-size:21px;margin-top:30px}h3{font-size:17px;margin-bottom:5px}
+.muted{color:#bbb9c3}.panel{background:#19191f;border:1px solid #35353e;border-radius:10px;padding:22px;margin:20px 0}
+.steps li{padding:7px 0}.steps li::marker{font-weight:bold;color:#d7f5aa}
+code{background:#2b2b32;border-radius:4px;padding:2px 6px;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%}th,td{text-align:left;border-bottom:1px solid #35353e;padding:11px 8px;vertical-align:top}
+.warn{border-left:3px solid #e9c184;padding-left:13px}.btn{display:inline-block;padding:10px 18px;background:#d7f5aa;color:#18200f;border-radius:6px;text-decoration:none;font-weight:bold}
+section{margin-bottom:25px}
+html[lang="ko"] [data-view="en"],html[lang="en"] [data-view="ko"]{display:none!important}
+@media(max-width:650px){header{flex-wrap:wrap}header,main{padding:18px}table{font-size:12px}header .tools{width:100%;justify-content:space-between}}
+</style>
+<script>
+(()=>{const key='antianti.translation.ui.lang';let lang;try{lang=localStorage.getItem(key)}catch(_){}
+if(lang!=='ko'&&lang!=='en')lang=navigator.language.toLowerCase().startsWith('ko')?'ko':'en';
+document.documentElement.lang=lang;
+document.addEventListener('DOMContentLoaded',()=>{const selector=document.getElementById('site-language');selector.value=lang;selector.addEventListener('change',()=>{lang=selector.value;document.documentElement.lang=lang;try{localStorage.setItem(key,lang)}catch(_){}})})})();
+</script>
+</head>
+<body>
+<header>
+  <strong>ANTI-ANTI · 5J6B WORKS</strong>
+  <div class="tools">
+    <a href="./"><span data-view="ko">번역 웹앱 열기</span><span data-view="en">Open translation editor</span></a>
+    <label for="site-language"><select id="site-language" aria-label="Website language"><option value="ko">한국어</option><option value="en">English</option></select></label>
+  </div>
+</header>
+<main data-view="ko">
+<h1>번역 패치 제작 및 게시 안내</h1>
+<p class="muted">게임에 포함된 텍스트를 번역하고 Steam 창작마당에 게시하는 방법입니다. 번역 편집은 웹 브라우저에서 진행하지만, Steam 게시는 별도의 Windows 업로더가 필요합니다.</p>
 <p><a class="btn" href="./">번역 웹앱 실행</a></p>
-<div class="panel"><strong>준비물</strong><p>Steam에 설치된 ANTI-ANTI, 최신 웹 브라우저. Excel은 선택 사항입니다. 사용자 글꼴을 쓴다면 재배포가 허용된 TTF/OTF/TTC 및 라이선스 문서가 필요합니다.</p><p class="warn">카탈로그는 이 사이트에서 제공하지 않습니다. 설치된 게임에서 직접 선택해야 합니다.</p></div>
-<section><h2>1. 카탈로그 찾기</h2><ol class="steps"><li>Steam 라이브러리에서 ANTI-ANTI를 우클릭합니다.</li><li><strong>관리 → 로컬 파일 찾아보기</strong>를 선택해 게임 설치 폴더를 엽니다.</li><li><code>Anti Anti_Data/StreamingAssets/Translation/translation_catalog.json</code> 파일을 찾습니다. 실행 파일명에 따라 <code>*_Data</code> 폴더명이 달라질 수 있습니다.</li><li>번역 웹앱의 <strong>게임 번역 카탈로그 (.json)</strong> 선택란에서 이 파일을 엽니다.</li></ol><p>카탈로그에는 번역 대상 ID, 한국어 원문, 공식 영어·일본어 참고 텍스트가 포함됩니다. 파일이 없다면 현재 설치된 게임 빌드에 카탈로그가 포함되어 있는지 확인해야 합니다.</p></section>
-<section><h2>2. 번역 작성: 웹 편집 또는 Excel</h2><p>두 방법 중 하나를 선택할 수 있습니다. Excel이나 별도 번역 프로그램을 반드시 설치할 필요는 없습니다.</p><h3>웹에서 직접 번역</h3><p>언어 코드(예: <code>es</code>), 게임에 표시할 언어 이름(예: <code>Español</code>), 번역팩 ID, 제작자, 버전을 입력합니다. 항목을 검색하거나 분류·번역 상태로 필터링하고 <strong>내 번역</strong>에 번역문을 작성합니다. 작업 내용을 보관하려면 <strong>작업용 XLSX 생성 → 작업 양식 다운로드</strong>를 이용하세요.</p><h3>Excel에서 번역</h3><p><strong>작업용 XLSX 생성</strong>을 누르고 화면에 나타나는 <strong>작업 양식 다운로드</strong> 링크를 눌러 파일을 저장합니다. Excel에서 각 번역 시트의 <code>Translation</code> 열에 번역을 입력합니다. <code>Korean</code>, <code>English</code>, <code>Japanese</code> 및 <code>Ref_</code> 시트는 참고용이며 주소·해시·원문을 변경하지 마세요. 웹앱에 돌아와 카탈로그를 먼저 불러온 뒤 <strong>기존 작업용 XLSX 불러오기</strong>로 이어서 작업합니다.</p></section>
-<section><h2>3. 번역 규칙 및 글꼴 설정</h2><p><code>⟦T1⟧</code> 등 필수 표식은 번역에서 누락하거나 중복시키면 안 됩니다. 원문과 위치가 달라도 되지만 개수는 유지해야 합니다. 게임 명령을 임의로 입력하면 검증이 거부될 수 있습니다. 민감 표현 가리기 대상 행은 번역문에서 가릴 표현도 지정하세요. 미번역 또는 원문이 변경된 행은 공식 번역으로 대체될 수 있습니다.</p><p>글꼴은 선택 사항입니다. 돋움(대사·UI), 바탕(나레이션), 효과음 역할별로 설정할 수 있습니다. 글꼴 파일을 지정했다면 재배포 라이선스 문서도 필요합니다. 지정하지 않은 역할은 게임 기본 글꼴을 사용합니다.</p></section>
-<section><h2>4. 검사 및 게시용 ZIP 생성</h2><ol class="steps"><li><strong>번역 검사</strong>를 실행하고 오류를 해결합니다.</li><li><strong>게시용 팩 만들기</strong>를 실행합니다.</li><li>화면의 <strong>게시용 팩 다운로드</strong> 링크를 눌러 <code>antianti-publishing-pack.zip</code>을 저장합니다.</li></ol></section>
-<section><h2>5. Steam 창작마당 게시</h2><ol class="steps"><li><a href="downloads/antianti-workshop-uploader-win-x64.zip">Windows 게시 도구 ZIP 다운로드</a></li><li>ZIP 전체를 압축 해제합니다. <code>TranslationPatchTool.Publisher.exe</code>를 실행합니다.</li><li>게임을 소유한 Steam 계정으로 로그인합니다.</li><li>번역 작업에 사용한 카탈로그와 생성한 게시용 ZIP을 선택해 창작마당 게시를 진행합니다.</li></ol><p><a href="https://steamcommunity.com/app/4982060/workshop/">ANTI-ANTI Steam 창작마당</a></p><p class="warn">Steam 서버 게시 → 다른 계정 구독 → 배포판 게임 적용의 전체 흐름은 아직 최종 검증되지 않았습니다. 게시 도구의 작동을 보장하는 안내가 아닙니다.</p></section>
-<section><h2>파일 종류 및 배포 제한</h2><table><thead><tr><th>파일</th><th>용도</th><th>배포 여부</th></tr></thead><tbody><tr><td><code>translation_catalog.json</code></td><td>게임 설치본의 공식 번역 대상 데이터</td><td>외부 배포 금지</td></tr><tr><td>작업용 <code>.xlsx</code></td><td>번역 편집·백업; 원문과 참고 번역 포함</td><td>외부 배포 금지</td></tr><tr><td>게시용 <code>.zip</code></td><td>번역 데이터와 선택된 글꼴 생성물</td><td>Steam 창작마당 게시용</td></tr></tbody></table><p>게임 원문과 작업용 XLSX를 외부에 배포하지 마세요. 번역 패치 배포는 Steam 창작마당으로 제한됩니다.</p></section>
-<section><h2>플레이어 적용</h2><p>Steam 창작마당에서 번역팩을 구독하고 다운로드 완료 후 게임을 실행합니다. 게임의 언어 목록에서 해당 번역팩을 선택하고 게임을 다시 시작하면 적용되는 구조입니다. 실제 배포판의 전체 적용 검증은 남아 있습니다.</p></section>
-<section><h2>English: Quick instructions</h2><ol><li>Install ANTI-ANTI on Steam. Open <strong>Manage → Browse local files</strong>.</li><li>Select <code>*_Data/StreamingAssets/Translation/translation_catalog.json</code> in the <a href="./">browser editor</a>.</li><li>Translate directly in the browser or export a working XLSX, edit only the <code>Translation</code> column, and re-import it after loading the catalog.</li><li>Keep required tokens, and optionally choose fonts and include their redistribution license.</li><li>Validate, build, and download the publishing ZIP.</li><li>Download and extract the separate Windows uploader, run <code>TranslationPatchTool.Publisher.exe</code>, sign into Steam, and submit the catalog and publishing ZIP.</li></ol><p>Never distribute the catalog or working XLSX. Publish packs only through Steam Workshop. Full Workshop and release-game end-to-end operation is not yet verified.</p></section>
-</main></body></html>
+<div class="panel"><strong>준비물</strong><p>Steam에 설치된 ANTI-ANTI, 최신 웹 브라우저. Excel은 선택 사항입니다. 사용자 글꼴을 쓴다면 재배포가 허용된 TTF/OTF/TTC 파일 및 라이선스 문서가 필요합니다.</p><p class="warn">카탈로그는 사이트에서 제공하지 않습니다. 게임 설치 폴더에서 가져와야 합니다. 설치본에 카탈로그가 없는 경우 해당 빌드에 포함되었는지 확인해야 합니다.</p></div>
+<section><h2>1. 게임의 번역 카탈로그 불러오기</h2>
+<ol class="steps"><li>Steam 라이브러리에서 ANTI-ANTI를 우클릭합니다.</li><li><strong>관리 → 로컬 파일 찾아보기</strong>로 설치 폴더를 엽니다.</li><li><code>Anti Anti_Data/StreamingAssets/Translation/translation_catalog.json</code>을 찾습니다. <code>*_Data</code> 폴더 이름은 실행 파일명에 따라 달라질 수 있습니다.</li><li>웹앱의 <strong>번역 카탈로그 (.json)</strong>에서 파일을 선택합니다.</li></ol>
+<p>이 JSON에는 번역할 문장과 한국어 원문·공식 영어·일본어 참고 문구가 담겨 있습니다. XLSX를 먼저 불러올 수는 없습니다. 카탈로그를 불러온 후에만 기존 XLSX를 가져올 수 있습니다.</p></section>
+<section><h2>2. 번역 작업: 웹에서 직접 입력하거나 XLSX 사용</h2><p>두 가지 작업 방법 중 하나를 선택합니다. 별도의 로컬 번역 앱은 필요하지 않습니다.</p>
+<h3>A. 웹에서 편집</h3><p>언어 코드(예: <code>es</code>), 언어 표시명(예: <code>Español</code>), 번역팩 ID, 제작자, 버전을 입력합니다. 번역할 항목을 선택하고 <strong>내 번역</strong>에 작성합니다. 검색·분류·번역 상태 필터를 사용할 수 있습니다. 중간 결과를 보관할 때는 <strong>작업 양식 저장 → 작업 양식 다운로드</strong>를 이용하세요.</p>
+<h3>B. Excel에서 편집</h3><p><strong>작업 양식 저장</strong>을 누른 다음 화면에 나타나는 <strong>작업 양식 다운로드</strong> 링크로 XLSX를 저장합니다. Excel 등에서 각 번역 시트의 <code>Translation</code> 열을 편집합니다. <code>Korean</code>·<code>English</code>·<code>Japanese</code>와 <code>Ref_</code> 참고 시트, 주소와 해시 열은 고치지 않습니다. 웹앱에서 JSON 카탈로그를 다시 불러온 뒤 <strong>기존 작업용 XLSX 불러오기</strong>로 이어서 작업합니다.</p>
+<p class="muted">상단의 한국어/English 선택은 웹사이트 설명 언어만 변경합니다. 제작할 번역팩의 대상 언어는 작업 화면의 ‘언어 코드’ 필드에서 별도로 설정합니다.</p></section>
+<section><h2>3. 필수 표식과 글꼴</h2><p><code>⟦T1⟧</code> 등의 필수 표식은 번역문에 유지해야 하며 삭제·중복할 수 없습니다. 민감 표현 가리기 대상 행은 번역문에서 가릴 표현도 지정합니다. 미번역이거나 원문이 바뀐 행은 공식 번역으로 대체됩니다.</p><p>글꼴은 선택 사항입니다. 돋움(대사·UI), 바탕(나레이션), 효과음에 각각 지정할 수 있으며, 파일을 넣었다면 재배포 라이선스 문서도 제출해야 합니다. 글꼴을 지정하지 않으면 게임 기본 글꼴을 사용합니다.</p></section>
+<section><h2>4. 검증 및 게시용 ZIP 다운로드</h2><ol class="steps"><li><strong>번역 검사</strong>를 실행하여 오류를 수정합니다.</li><li><strong>게시용 팩 만들기</strong>를 눌러 파일을 생성합니다.</li><li>화면에 나타나는 <strong>게시용 팩 다운로드</strong> 링크에서 <code>antianti-publishing-pack.zip</code>을 저장합니다.</li></ol></section>
+<section><h2>5. Steam 창작마당 게시 (별도 프로그램 필요)</h2><ol class="steps"><li><a href="downloads/antianti-workshop-uploader-win-x64.zip">Windows 게시 도구 ZIP 다운로드</a></li><li>압축을 전부 해제한 다음 <code>TranslationPatchTool.Publisher.exe</code>를 실행합니다.</li><li>게임을 소유한 Steam 계정으로 로그인합니다.</li><li>동일한 카탈로그와 웹앱에서 생성한 게시용 ZIP을 선택해 게시를 진행합니다.</li></ol><p><a href="https://steamcommunity.com/app/4982060/workshop/">ANTI-ANTI 창작마당 열기</a></p><p class="warn">실제 Steam 서버 게시 → 다른 계정 구독 → 배포판 게임 적용까지의 전체 과정은 아직 최종 검증되지 않았습니다.</p></section>
+<section><h2>파일의 역할과 배포 제한</h2><table><thead><tr><th>파일</th><th>무엇에 쓰나요?</th><th>배포</th></tr></thead><tbody><tr><td><code>translation_catalog.json</code></td><td>게임 설치본의 번역 원본·참고 데이터</td><td>외부 배포 금지</td></tr><tr><td>작업용 <code>.xlsx</code></td><td>번역 편집 및 백업. 원문 포함</td><td>외부 배포 금지</td></tr><tr><td>게시용 <code>.zip</code></td><td>번역 내용과 선택적 글꼴 생성물</td><td>Steam 창작마당에만 게시</td></tr></tbody></table></section>
+<section><h2>플레이어 적용</h2><p>창작마당에서 번역팩을 구독한 뒤 다운로드가 완료되면 게임을 실행합니다. 게임 언어 선택 메뉴에서 해당 팩을 선택하고 재시작해 적용하도록 설계되어 있습니다. 배포판 전체 적용은 아직 검증되지 않았습니다.</p></section>
+</main>
+<main data-view="en">
+<h1>Translation Patch Creation and Publishing Guide</h1>
+<p class="muted">Translate game text and create a pack for Steam Workshop. Editing runs in your web browser. Publishing to Steam Workshop requires a separate Windows uploader.</p>
+<p><a class="btn" href="./">Open translation editor</a></p>
+<div class="panel"><strong>What you need</strong><p>ANTI-ANTI installed through Steam and a current web browser. Excel is optional. Custom fonts require a redistributable TTF/OTF/TTC file and its license documentation.</p><p class="warn">The catalog is not downloaded from this website. Obtain it from your installed game. If it is missing, confirm whether your installed build includes a translation catalog.</p></div>
+<section><h2>1. Load the game's translation catalog</h2><ol class="steps"><li>Right-click ANTI-ANTI in your Steam Library.</li><li>Choose <strong>Manage → Browse local files</strong>.</li><li>Find <code>Anti Anti_Data/StreamingAssets/Translation/translation_catalog.json</code>. The <code>*_Data</code> folder name may vary with the game executable.</li><li>Select this JSON in the web editor's <strong>Translation catalog (.json)</strong> field.</li></ol><p>This file contains translatable entries, Korean source text, and official English and Japanese references. The catalog must be loaded before importing a previously saved XLSX.</p></section>
+<section><h2>2. Translate in the browser or with XLSX</h2><p>Choose either workflow. You do not need a separate desktop translation application.</p>
+<h3>A. Edit directly in your browser</h3><p>Enter a locale code (such as <code>es</code>), a display name (such as <code>Español</code>), pack ID, author, and version. Select an entry and type into <strong>Your translation</strong>. You can search and filter by category or translation status. To keep a backup, use <strong>Save workbook → Download workbook</strong>.</p>
+<h3>B. Edit with Excel</h3><p>Click <strong>Save workbook</strong>, then the <strong>Download workbook</strong> link that appears. Edit the <code>Translation</code> column on the translation sheets in Excel or another XLSX editor. Do not change the <code>Korean</code>, <code>English</code>, <code>Japanese</code>, or <code>Ref_</code> reference sheets, addresses, or hash columns. Back in the web app, load the JSON catalog first and then select <strong>Continue a workbook (.xlsx)</strong>.</p>
+<p class="muted">The 한국어/English dropdown changes only the website's display language. Set the language your patch translates into separately, using the editor's locale code field.</p></section>
+<section><h2>3. Required markers and fonts</h2><p>Keep required markers such as <code>⟦T1⟧</code> in the translation exactly once; do not remove or duplicate them. For sensitive-content entries, specify the phrases to hide in the translated text. Missing or outdated translations fall back to official game text.</p><p>Fonts are optional. You can choose fonts for dialogue/UI, narration, and sound effects separately. If you supply a font file, include its redistribution license document. Unspecified roles use the game's default fonts.</p></section>
+<section><h2>4. Validate and download the publishing ZIP</h2><ol class="steps"><li>Click <strong>Check translation</strong> and resolve any errors.</li><li>Click <strong>Build publishing pack</strong>.</li><li>Use the <strong>Download publishing pack</strong> link to save <code>antianti-publishing-pack.zip</code>.</li></ol></section>
+<section><h2>5. Publish to Steam Workshop (separate program required)</h2><ol class="steps"><li><a href="downloads/antianti-workshop-uploader-win-x64.zip">Download the Windows uploader ZIP</a>.</li><li>Extract the entire ZIP and run <code>TranslationPatchTool.Publisher.exe</code>.</li><li>Sign into a Steam account that owns the game.</li><li>Select the same game catalog and the publishing ZIP created in your browser, then submit to Steam Workshop.</li></ol><p><a href="https://steamcommunity.com/app/4982060/workshop/">Open ANTI-ANTI Steam Workshop</a></p><p class="warn">The full sequence from Steam server publishing through another account's subscription and release-game application has not yet been fully verified.</p></section>
+<section><h2>Files and distribution rules</h2><table><thead><tr><th>File</th><th>Purpose</th><th>Distribution</th></tr></thead><tbody><tr><td><code>translation_catalog.json</code></td><td>Source and reference data from the installed game</td><td>Do not distribute externally</td></tr><tr><td>Working <code>.xlsx</code></td><td>Translation editing and backups; contains original text</td><td>Do not distribute externally</td></tr><tr><td>Publishing <code>.zip</code></td><td>Translated text and optional generated font data</td><td>Steam Workshop only</td></tr></tbody></table></section>
+<section><h2>How players apply a pack</h2><p>Subscribe to the translation pack through Steam Workshop. After the download is complete, start the game, select the pack in the language menu, and restart the game. This is the intended behavior; full release-build application remains unverified.</p></section>
+</main>
+</body></html>
